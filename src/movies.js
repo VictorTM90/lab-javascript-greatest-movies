@@ -38,21 +38,41 @@ function dramaMoviesScore(movies) {
   let filmDrama = movies.filter((drm)=>{
     return drm.genre.includes("Drama")});
 
-  let avarDramaFilm = filmDrama.reduce((acc1, scroDrama)=>{
-    if (scroDrama.score === undefined){
+  let avarDramaFilm = filmDrama.reduce((acc1, scoreDrama)=>{
+    if (scoreDrama.score === undefined){
       return acc1
     } else {
-      return acc1 + scroDrama.score / filmDrama.length
+      return acc1 + scoreDrama.score / filmDrama.length
     }
-  }); 
-  return avarDramaFilm  
+      }, 0); 
+  return Number (avarDramaFilm.toFixed(2))  
 }
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear() {}
+function orderByYear(movies) {
+  let moviesCopied = JSON.parse( JSON.stringify( movies ))
+  //copio el array 
+  let movByYear = moviesCopied.sort ((first, second)=>{
+    if (first.year > second.year ){
+      return 1
+    } else  {
+      return -1 
+    }
+});
+    return  movByYear
+
+}
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically() {}
+function orderAlphabetically(movies) {
+  let moviesCopiedAlph = JSON.parse( JSON.stringify( movies ))
+  
+  let moviesFirstTwenty = moviesCopiedAlph.slice(0,21) // Cojo los 20 primeros objetos
+  
+  let movByAlphFirstTwenty = moviesFirstTwenty.sort() // los ordeno alfabet. 
+
+  return movByAlphFirstTwenty.title // devuelvo el resultado
+}
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes() {}
