@@ -60,7 +60,6 @@ function orderByYear(movies) {
     }
 });
     return  movByYear
-
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
